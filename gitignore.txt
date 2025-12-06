@@ -1,0 +1,14 @@
+# Git ignore rules 
+# Ignore Word temporary files
+~$*.docx
+
+# Ignore backup and temp files
+*.tmp
+*.log
+
+# Ignore SQLite database files (optional, if you don’t want to commit .db files)
+*.db
+
+# Ignore OS-specific files
+Thumbs.db
+.DS_Store
