@@ -6,5 +6,5 @@ SELECT c.customer_id as employee_id,
 		c.name as name,
 		c.email as email,
 		c.city as city
-	From customer c
+	From customers c
 	
