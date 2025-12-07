@@ -1,4 +1,4 @@
-# Project00006
+# Project00007
 
 ## 📖 Overview
 The goal of Project00006 is to showcase reproducible, professional SQL practices:
@@ -118,6 +118,7 @@ MIT License
 ---
 
 This shell gives you **structure without confusion**: Overview → Quick Start → Getting Started → Outputs → Tests → Roadmap → License. Tomorrow, once you’ve coded and run the queries, we’ll fill in the outputs and make it recruiter‑ready.
+
 
 
 
