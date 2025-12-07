@@ -1,24 +1,24 @@
 # Project00007
 
-## 📖 Overview
-The goal of Project00006 is to showcase reproducible, professional SQL practices:
-clean schema design, realistic sample data, validation scripts, and clear documentation.
+## Overview
+Project00007 is a simple SQLite project that models a customer–order–product relationship. It demonstrates schema design, data insertion, and query validation, showing how customers place orders that contain products, with order details tracking quantities. The project uses consistent lowercase, plural, snake_case naming conventions for tables and columns to ensure clarity and cross‑platform compatibility.
+
 ---
 
 ## ⚡ Quick Start
 1. Clone the repo:
    ```bash
-   git clone https://github.com/jrhcorp2023Git/Project00006.git
-   cd Project00006
+   git clone https://github.com/jrhcorp2023Git/Project00007.git
+   cd Project00007
    ```
 2. Build the database:
    ```bash
-	sqlite3 project00006.db < sql/schema.sql
-	sqlite3 project00006.db < sql/inserts.sql
+	sqlite3 project00007.db < sql/schema.sql
+	sqlite3 project00007.db < sql/inserts.sql
    ```
 3. Run queries:
    ```bash
-	sqlite3 project00006.db < sql/queries.sql
+	sqlite3 project00007.db < sql/queries.sql
    ```
 4. Run tests
    ```bash
@@ -28,87 +28,135 @@ clean schema design, realistic sample data, validation scripts, and clear docume
 ---
 
 🚀 Getting Started
-Prerequisites
-- SQLite 3.0+ installed
-- Git for cloning the repository
-- Command line access (Windows PowerShell, macOS Terminal, or Linux shell)
-Setup Instructions
-Step‑by‑step instructions for building and running the project.
-Run the schema and inserts files to build the database, then execute queries and tests to confirm outputs.
+
+To set up and run Project00007 on your local machine:
+
+1. **Install SQLite**
+   - Make sure you have SQLite installed. You can verify with:
+     ```bash
+     sqlite3 --version
+     ```
+
+2. **Clone the repository**
+   ```bash
+   git clone https://github.com/jrhcorp2023Git/Project00007.git
+   cd Project00007
+
+3. Initialize the database
+- Create the schema:
+sqlite3 project00007.db < sql/schema.sql
+
+4. Insert sample database
+sqlite3 project00007.db < sql/inserts.sql
+
+5. Run queries
+sqlite3 project00007.db < sql/queries.sql
+
+6. View results
+1|Alice Johnson|alice@example.com|Pittsburgh
+101|Laptop|1200.0
+1001|1|2025-12-01
+5001|1001|101|1
 
 ---
 
 📊 Query Outputs
-Query 1 – Employees with Departments
-
-employee_id | first_name | last_name | department_name
-------------+------------+-----------+----------------
-101         | Alice      | Johnson   | Engineering
-102         | Bob        | Smith     | Engineering
-103         | Carol      | Davis     | Human Resources
-104         | David      | Miller    | Finance
-105         | Eve        | Wilson    | Marketing
-
-Query 2 – Projects with Assigned Employees and Roles
-
-project_name       | employee_name   | role
--------------------+-----------------+--------------------
-Cloud Migration    | Alice Johnson   | Lead Developer
-Cloud Migration    | Bob Smith       | DevOps Engineer
-Payroll Automation | Carol Davis     | HR Analyst
-Payroll Automation | David Miller    | Financial Analyst
-Website Redesign   | Eve Wilson      | Marketing Specialist
-
-Query 3 – Department Salary Totals
-
-department_name   | total_salary
-------------------+-------------
-Engineering       | 180000.0
-Finance           | 72000.0
-Human Resources   | 60000.0
-Marketing         | 65000.0
-
-Test Results (from test.sql) 
-
-Departments
-Employees
-Projects
-Employee_Project_Assignments
-4
-5
-3
-5
-Engineering|180000.0
-Finance|72000.0
-Human Resources|60000.0
-Marketing|65000.0
 
 ---
 
-Roadmap
-- [ ] Add ERD diagram  ![ERD Diagram](docs/project00006-diagram.png)
-- [ ] Expand queries for advanced reporting  
-- [ ] Automate test scripts further    
+## Roadmap
+
+The following steps outline how Project00007 will evolve:
+
+- **Phase 1: Validation (Complete)**
+  - Build schema with customers, products, orders, and order_details.
+  - Insert sample data and confirm with basic queries.
+
+- **Phase 2: Query Expansion (In Progress)**
+  - Add joins to connect customers, orders, and products.
+  - Create aggregate queries (e.g., total sales per customer, most popular product).
+  - Introduce filtering and grouping for deeper analysis.
+
+- **Phase 3: Automation**
+  - Develop validation scripts to automatically run queries and check outputs.
+  - Add reinforcement quizzes at the end of each project to lock in learning.
+
+- **Phase 4: Documentation**
+  - Expand README with practice query checklist and advanced examples.
+  - Provide recruiter‑friendly outputs and explanations.
+
+- **Phase 5: Dataset Growth**
+  - Add more customers, products, and orders for realistic scenarios.
+  - Explore subqueries and advanced SQL features (e.g., window functions).
+
+- **Phase 6: Portfolio Readiness**
+  - Ensure reproducibility with clear instructions.
+  - Polish documentation and outputs for recruiter and collaborator review.
+---
+## Reinforcement Quiz
+
+Test your understanding of Project00007 with these quick questions:
+
+1. **Which table stores the relationship between orders and products?**  
+   - A) customers  
+   - B) order_details ✅  
+   - C) products  
+   - D) orders  
+   *Explanation:* The `order_details` table links orders to products and records the quantity purchased.  
+   *Hint:* Think about where quantities of products per order are tracked.
 
 ---
-Reinforcement Quiz (aligned to Project00006)
-1. 	Which SQL clause ensures that salary totals are calculated per department in Query 3?
-A. 	WHERE
-B. 	GROUP BY
-C. 	ORDER BY
-D. 	JOIN
 
-2. 	In Query 2, why do we join through the  table?
-A. 	To connect employees directly to departments
-B. 	To handle the many‑to‑many relationship between employees and projects
-C. 	To calculate salaries per project
-D. 	To exclude employees without projects
+2. **What SQL clause is used to combine rows from two tables based on a related column?**  
+   - A) ORDER BY  
+   - B) JOIN ✅  
+   - C) GROUP BY  
+   - D) WHERE  
+   *Explanation:* `JOIN` is used to combine rows from two or more tables based on a related column.  
+   *Hint:* It’s the clause you used to connect orders to customers.
 
-3. 	What does the expression  represent in Query 2?
-A. 	The employee’s department ID
-B. 	The concatenated full name of the employee
-C. 	The total salary of the employee
-D. 	The role assigned to the employee
+---
+
+3. **Which query would return the total amount spent by each customer?**  
+   - A)  
+     ```sql
+     SELECT c.name, SUM(p.price * d.quantity)
+     FROM customers c
+     JOIN orders o ON c.customer_id = o.customer_id
+     JOIN order_details d ON o.order_id = d.order_id
+     JOIN products p ON d.product_id = p.product_id
+     GROUP BY c.name;
+     ``` ✅  
+   - B) `SELECT AVG(price) FROM products;`  
+   - C) `SELECT * FROM orders;`  
+   - D) `SELECT SUM(price) FROM products;`  
+   *Explanation:* The first query correctly joins all four tables and groups by customer name.  
+   *Hint:* It requires joining all four tables and grouping by customer name.
+
+---
+
+4. **What is the purpose of the GROUP BY clause?**  
+   - A) To aggregate rows by a column ✅  
+   - B) To sort rows  
+   - C) To filter rows  
+   - D) To join tables  
+   *Explanation:* `GROUP BY` is used to aggregate rows that share the same values in specified columns.  
+   *Hint:* It’s often paired with `SUM` or `COUNT`.
+
+---
+
+5. **Which query would list all orders with customer names and order dates?**  
+   - A) `SELECT name, email FROM customers;`  
+   - B)  
+     ```sql
+     SELECT o.order_id, c.name, o.order_date
+     FROM orders o
+     JOIN customers c ON o.customer_id = c.customer_id;
+     ``` ✅  
+   - C) `SELECT product_name FROM products;`  
+   - D) `SELECT * FROM orders;`  
+   *Explanation:* This query joins orders with customers to display order IDs, customer names, and order dates.  
+   *Hint:* It’s the query you already wrote in `qcalc.sql`.
 
 ---
 
@@ -118,6 +166,7 @@ MIT License
 ---
 
 This shell gives you **structure without confusion**: Overview → Quick Start → Getting Started → Outputs → Tests → Roadmap → License. Tomorrow, once you’ve coded and run the queries, we’ll fill in the outputs and make it recruiter‑ready.
+
 
 
 
